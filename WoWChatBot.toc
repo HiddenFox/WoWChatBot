@@ -3,7 +3,7 @@
 ## Title: WoWChatBot
 ## Author: HiddenFox
 ## Notes: 
-## SavedVariables: WoWChatBot, HF_TradeHelper
+## SavedVariables: WoWChatBot
 
 embeds.xml
 Locales\zhCN.lua
