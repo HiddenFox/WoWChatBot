@@ -1,0 +1,10 @@
+## Interface: 40200
+## Version: 1.4.0
+## Title: WoWChatBot
+## Author: HiddenFox
+## Notes: 
+## SavedVariables: WoWChatBot, HF_TradeHelper
+
+embeds.xml
+Locales\zhCN.lua
+WoWChatBot.lua
