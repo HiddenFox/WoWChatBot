@@ -1,5 +1,5 @@
 ## Interface: 40200
-## Version: 1.4.0
+## Version: 1.4.1
 ## Title: WoWChatBot
 ## Author: HiddenFox
 ## Notes: 
