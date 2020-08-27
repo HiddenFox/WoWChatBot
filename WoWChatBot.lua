@@ -57,17 +57,9 @@ local options = {
                     get = "GeneralGetter",
                     set = "GeneralSetter",
                 },
-                -- autoReply_enableRaid = {
-                --     type = "toggle",
-                --     order = 4,
-
-                --     name = "自动回复团队",
-                --     get = "GeneralGetter",
-                --     set = "GeneralSetter",
-                -- },
                 autoReply_raidOption = {
                     type = "select",
-                    order = 5,
+                    order = 4,
                     -- width = "full",
                     name = "团队聊天",
                     values = {
@@ -75,6 +67,13 @@ local options = {
                         whisper = "密聊回复",
                         raid = "团队回复",
                     },
+                    get = "GeneralGetter",
+                    set = "GeneralSetter",
+                },
+                autoReply_leaderOnly = {
+                    type = "toggle",
+                    order = 5,
+                    name = "仅是队长时回复",
                     get = "GeneralGetter",
                     set = "GeneralSetter",
                 },
@@ -117,6 +116,7 @@ local defaults = {
         autoReply_enableWhisper = true,
         autoReply_partyOption = "noReply",
         autoReply_raidOption = "noReply",
+        autoReply_leaderOnly = false,
         autoReply_separator = '^',
         autoReply_header = L["plugin_name"],
         autoReply_text = '不客气~^谢^3q^3Q',
@@ -149,7 +149,7 @@ function WoWChatBot:ChatCommand(input)
 end
 
 function WoWChatBot:OnInitialize()
-    self.debug = false
+    self.debug = true
     self.db = LibStub("AceDB-3.0"):New("WoWChatBot", defaults, true)
     
     LibStub("AceConfig-3.0"):RegisterOptionsTable("WoWChatBot", options)
@@ -182,26 +182,35 @@ function WoWChatBot:CHAT_MSG_WHISPER(event, msg, sender)
     end
 end
 
+function WoWChatBot:IsPassLeaderCheck()
+    -- self:Debug(self.db.char.autoReply_leaderOnly)
+    -- self:Debug(UnitIsGroupLeader("player"))
+    if (self.db.char.autoReply_leaderOnly and not UnitIsGroupLeader("player")) then
+        return false
+    end
+    return true
+end
+
 function WoWChatBot:CHAT_MSG_PARTY(event, msg, sender)
-    if (self.db.char.autoReply_partyOption ~= "noReply") then
+    if (self.db.char.autoReply_partyOption ~= "noReply" and self:IsPassLeaderCheck()) then
         self:HandleReplyMsg(event, msg, self.db.char.autoReply_partyOption, sender)
     end
 end
 
 function WoWChatBot:CHAT_MSG_PARTY_LEADER(event, msg, sender)
-    if (self.db.char.autoReply_partyOption ~= "noReply") then
+    if (self.db.char.autoReply_partyOption ~= "noReply" and self:IsPassLeaderCheck()) then
         self:HandleReplyMsg(event, msg, self.db.char.autoReply_partyOption, sender)
     end
 end
 
 function WoWChatBot:CHAT_MSG_RAID(event, msg, sender)
-    if (self.db.char.autoReply_raidOption ~= "noReply") then
+    if (self.db.char.autoReply_raidOption ~= "noReply" and self:IsPassLeaderCheck()) then
         self:HandleReplyMsg(event, msg, self.db.char.autoReply_raidOption, sender)
     end
 end
 
 function WoWChatBot:CHAT_MSG_RAID_LEADER(event, msg, sender)
-    if (self.db.char.autoReply_raidOption ~= "noReply") then
+    if (self.db.char.autoReply_raidOption ~= "noReply" and self:IsPassLeaderCheck()) then
         self:HandleReplyMsg(event, msg, self.db.char.autoReply_raidOption, sender)
     end
 end
