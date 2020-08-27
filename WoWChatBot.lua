@@ -149,7 +149,7 @@ function WoWChatBot:ChatCommand(input)
 end
 
 function WoWChatBot:OnInitialize()
-    self.debug = true
+    self.debug = false
     self.db = LibStub("AceDB-3.0"):New("WoWChatBot", defaults, true)
     
     LibStub("AceConfig-3.0"):RegisterOptionsTable("WoWChatBot", options)
