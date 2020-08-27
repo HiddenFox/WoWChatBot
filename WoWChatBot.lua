@@ -118,7 +118,7 @@ local defaults = {
         autoReply_partyOption = "noReply",
         autoReply_raidOption = "noReply",
         autoReply_separator = '^',
-        autoReply_heade = "隐之狐自动回复插件：",
+        autoReply_header = L["plugin_name"],
         autoReply_text = '不客气~^谢^3q^3Q',
     },
 }
