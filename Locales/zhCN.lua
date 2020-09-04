@@ -21,4 +21,4 @@ L["autoReply_text"] = "自动回复规则（鼠标悬停查看详细用法）"
 L["autoReply_text_desc"] = '每行一条规则，每条规则以分隔符隔成多个字段，第一个字段为回复文字，后面的字段为触发条件。\n\n规则 "不客气~^谢^3q^3Q" \n表示：如果私聊中包含"谢"或者"3q"或者"3Q"，则发送"不客气~"给对方。'
 L["default_autoInvite_text"] = "1,11,111,invite me"
 L["default_autoReply_header"] = "WoWChatBot自动回复:"
-L["default_autoReply_text"] = "不客气~^谢^3q^3Q"
+L["default_autoReply_text"] = "不客气~^谢^3q"

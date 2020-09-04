@@ -95,7 +95,7 @@ local options = {
                 },
                 autoReply_text = {
                     type = "input",
-                    multiline = 20,
+                    multiline = 15,
                     order = 8,
                     width = "full",
                     name = L["autoReply_text"],
@@ -112,7 +112,7 @@ local defaults = {
     char = {
         autoInvite_enable = true,
         autoInvite_text = L["default_autoInvite_text"],
-        
+
         autoReply_enableWhisper = true,
         autoReply_partyOption = "noReply",
         autoReply_raidOption = "noReply",
@@ -217,7 +217,7 @@ end
 
 function WoWChatBot:HandleReplyMsg(event, msg, chatType, sender)
     -- skip messages sent by the current player
-    if string.find(sender, UnitName("player")) == 1 then
+    if sender == UnitName("player") == 1 then
         return
     end
 
@@ -246,9 +246,10 @@ function WoWChatBot:GetAutoReplyText(msg)
             for idx, token in pairs(tokenArray) do
                 if idx ~= 1 then
                     if token == "*" then
+                        found = true
                         table.insert(replyArray, replyText)
                         break
-                    elseif string.find(msg, token)then
+                    elseif string.find(string.upper(msg), string.upper(token)) then
                         found = true
                         table.insert(replyArray, replyText)
                         break
