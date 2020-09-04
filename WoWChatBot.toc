@@ -6,5 +6,8 @@
 ## SavedVariables: WoWChatBot
 
 embeds.xml
+
 Locales\zhCN.lua
+Locales\enUS.lua
+
 WoWChatBot.lua
