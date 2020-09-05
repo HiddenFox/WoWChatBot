@@ -218,7 +218,11 @@ end
 
 function WoWChatBot:HandleReplyMsg(event, msg, chatType, sender)
     -- skip messages sent by the current player
-    if sender == UnitName("player") == 1 then
+    local tokenArray = {strsplit('-', sender)}
+    senderName = tokenArray[1]
+    playerName, _ = UnitName("player")
+    -- self:Debug(senderName, playerName)
+    if senderName == playerName then
         return
     end
 
