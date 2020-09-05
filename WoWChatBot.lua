@@ -170,7 +170,7 @@ function WoWChatBot:CHAT_MSG_WHISPER(event, msg, sender)
         local tokenArray = {strsplit(",", self.db.char.autoInvite_text)}
         if #tokenArray > 1 then
             for idx, token in pairs(tokenArray) do
-                if msg == token then
+                if string.upper(msg) == string.upper(token) then
                     InviteUnit(sender)
                     break
                 end
