@@ -73,6 +73,7 @@ local options = {
                 autoReply_leaderOnly = {
                     type = "toggle",
                     order = 5,
+                    width = "full",
                     name = L["autoReply_leaderOnly"],
                     get = "GeneralGetter",
                     set = "GeneralSetter",
