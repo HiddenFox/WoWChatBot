@@ -1,5 +1,5 @@
 ## Interface: 40200
-## Version: 1.5.0
+## Version: @project-version@
 ## Title: WoWChatBot
 ## Author: HiddenFox (trendhanfeng@gmail.com)
 ## Notes: 
