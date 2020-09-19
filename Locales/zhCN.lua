@@ -1,5 +1,7 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("WoWChatBot", "zhCN")
 
+if not L then return end
+
 L["plugin_name"] = "WoWChatBot - 聊天机器人"
 L["autoInvite"] = "自动邀请"
 L["autoInvite_enable"] = "开启"
